@@ -9,6 +9,7 @@ function Home() {
     { id: 2, title: 'Product 2', image: pencil, description: 'Description 2' },
     { id: 3, title: 'Product 3', image: pencil, description: 'Description 3' },
     { id: 4, title: 'Product 4', image: pencil, description: 'Description 4' },
+    { id: 5, title: 'Product 5', image: pencil, description: 'Description 5' },
     // Add more product data as needed
   ];
 
@@ -17,7 +18,7 @@ function Home() {
       <div className="landing-page">
         <div className="buttons-container">
           <div className="button signup-button">Sign Up</div>
-          <div className="button login-button">Login</div>
+          <div className="button login-button"><a href="/login">Login</a></div>
         </div>
       <header>
         <h1>Welcome to Stationary Shop</h1>
