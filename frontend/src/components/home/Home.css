@@ -24,6 +24,30 @@
     font-size: 1.2rem;
     color: #666;
   }
+
+  /* StationaryShop.css */
+
+/* Add this style to position the login button */
+/* StationaryShop.css */
+
+/* StationaryShop.css */
+
+/* Add these styles for the buttons and container */
+.buttons-container {
+  display: flex; /* Display buttons in a row */
+  justify-content: flex-end; /* Align buttons to the right */
+  gap: 10px; /* Add space between buttons */
+}
+
+.button {
+  padding: 8px 16px;
+  background-color: #f9f9f9;
+  border: 1px solid #333;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+
   
   /* Styles for sections */
   .products,
@@ -86,12 +110,33 @@
     background-color: #ff7043; /* Example hover color */
   }
   
+
+
+  /* AboutUs.css and ContactUs.css */
+
+.about-us,
+.contact {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center content vertically */
+  align-items: center; /* Center content horizontally */
+  text-align: center;
+  padding: 40px 20px;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
   
   /* Styles for footer */
-  footer {
+
+.footer {
+    display: flex;
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
     text-align: center;
-    padding-top: 20px;
-    color: #888;
-    font-size: 0.9rem;
+    padding: 20px;
+    background-color: #f9f9f9;
+    color: #333;
+    min-height: 100px; /* Set a minimum height if needed */
   }
   

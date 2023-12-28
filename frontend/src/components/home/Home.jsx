@@ -15,6 +15,10 @@ function Home() {
   return (
     <>
       <div className="landing-page">
+        <div className="buttons-container">
+          <div className="button signup-button">Sign Up</div>
+          <div className="button login-button">Login</div>
+        </div>
       <header>
         <h1>Welcome to Stationary Shop</h1>
         <p>Your one-stop shop for all things stationery!</p>
@@ -45,7 +49,7 @@ function Home() {
           {/* Add more contact information */}
         </section>
       </main>
-      <footer>
+      <footer className='footer'>
         <p>&copy; 2023 Stationary Shop. All rights reserved.</p>
       </footer>
     </div>
