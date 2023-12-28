@@ -1,0 +1,97 @@
+/* StationaryShop.css */
+
+/* Styles for the main container */
+.landing-page {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 20px;
+    background-color: #f9f9f9;
+    color: #333;
+  }
+  
+  /* Styles for the header */
+  header {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  header h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    color: #4b0082; /* Dark purple */
+  }
+  
+  header p {
+    font-size: 1.2rem;
+    color: #666;
+  }
+  
+  /* Styles for sections */
+  .products,
+  .about-us,
+  .contact {
+    margin-bottom: 40px;
+  }
+  
+  /* Styles for featured products */
+  /* ProductCard.css */
+
+.product-card {
+    display: flex;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .product-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .product-image {
+    flex: 1;
+    padding: 10px;
+  }
+  
+  .product-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+  }
+  
+  .product-info {
+    flex: 2;
+    padding: 10px;
+  }
+  
+  .product-info h3 {
+    margin-top: 0;
+  }
+  
+  .product-info p {
+    color: #555;
+  }
+  
+  .product-info button {
+    padding: 8px 16px;
+    background-color: #ff5722; /* Example button color */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  .product-info button:hover {
+    background-color: #ff7043; /* Example hover color */
+  }
+  
+  
+  /* Styles for footer */
+  footer {
+    text-align: center;
+    padding-top: 20px;
+    color: #888;
+    font-size: 0.9rem;
+  }
+  
