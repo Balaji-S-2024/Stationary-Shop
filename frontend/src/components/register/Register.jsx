@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import './Login.css'; // Import your CSS file for login styles
+import './Register.css'; // Import your CSS file for login styles
 
-function Login() {
+function Register() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
+  const [conpassword, setConPassword] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const handleLogin = () => {
@@ -38,6 +40,14 @@ function Login() {
             />
           </label>
           <label>
+            Email:
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </label>
+          <label>
             Password:
             <input
               type="password"
@@ -45,11 +55,19 @@ function Login() {
               onChange={(e) => setPassword(e.target.value)}
             />
           </label>
-          <button type="submit">Login</button>
+          <label>
+            Retype Password:
+            <input
+              type="password"
+              value={conpassword}
+              onChange={(e) => setConPassword(e.target.value)}
+            />
+          </label>
+          <button type="submit">Register</button>
         </form>
       )}
     </div>
   );
 }
 
-export default Login;
+export default Register;
