@@ -4,10 +4,7 @@ const mongo_uri = "mongodb+srv://balajisankar0202:balaji12345@stationary.kszu7zb
 
 const connectDatabase = () => {
   mongoose
-    .connect(mongo_uri, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    })
+    .connect(mongo_uri)
     .then((data) => {
       console.log(`Mongodb connected with server: ${data.connection.host}`);
     });

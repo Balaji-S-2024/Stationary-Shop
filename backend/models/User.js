@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const validator = require("validator");
 
 const userSchema = new mongoose.Schema({
   name: {
@@ -12,8 +11,6 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [true, "Please Enter Your Email"],
     unique: true,
-
-    validate: [validator.isEmail, "Please Enter a valid Email"], // validator.isEmail cheack given email String and after varfiying is email correct type or not of true
   },
 
   password: {

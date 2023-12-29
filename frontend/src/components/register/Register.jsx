@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import './Register.css'; // Import your CSS file for login styles
 
 function Register() {
@@ -7,14 +8,31 @@ function Register() {
   const [email, setEmail] = useState('');
   const [conpassword, setConPassword] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userData, setUserData] = useState({
+    username: '',
+    email: '',
+    password: '',
+  });
 
-  const handleLogin = () => {
-    // Simulating a successful login - replace with your authentication logic
-    if (username && password) {
-      setIsLoggedIn(true);
-    } else {
-      alert('Please enter both username and password.');
-    }
+  const handleLogin = async (event) => {
+    // Handle all the validations
+    event.preventDefault();
+    setUserData({
+      username:username,
+      email:email,
+      password:password,
+    })
+    console.log('Requesting...');
+    axios.post('http://localhost:3000/register', userData)
+      .then(response => {
+        // Handle successful creation
+        console.log('User created:', response.data);
+        // Optionally, reset the form or perform other actions upon successful creation
+      })
+      .catch(error => {
+        // Handle error
+        console.error('Error creating user:', error);
+      });
   };
 
   return (
@@ -26,10 +44,7 @@ function Register() {
           <button onClick={() => setIsLoggedIn(false)}>Logout</button>
         </div>
       ) : (
-        <form className="login-form" onSubmit={(e) => {
-          e.preventDefault(); // Prevent default form submission behavior
-          handleLogin();
-        }}>
+        <form className="login-form" onSubmit={handleLogin}>
           <h2>Register</h2>
           <label>
             Username:
