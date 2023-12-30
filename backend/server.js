@@ -44,6 +44,25 @@ app.post('/register', async (req, res) => {
 })
 
 
+// USer
+
+const User = require('./models/User');
+app.get('/get-user', async (req, res) => {
+    console.log('hitting get...');
+    try {
+        const users = await User.find(); 
+        console.log(users);
+        res.json(users); 
+      } catch (err) {
+        res.status(500).json({ message: err.message });
+      }
+})
+
+app.get('/', async (req, res) => {
+    console.log('hitting get...');
+    res.send('get')
+})
+
 
 
 

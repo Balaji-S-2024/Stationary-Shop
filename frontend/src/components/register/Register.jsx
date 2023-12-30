@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import './Register.css'; // Import your CSS file for login styles
+// import { useHistory } from 'react-router-dom';
+import axios from 'axios';
 
 function Register() {
+  // const history = useHistory();
+
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
   const [conpassword, setConPassword] = useState('');
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userData, setUserData] = useState({
     username: '',
     email: '',
@@ -28,6 +30,12 @@ function Register() {
         // Handle successful creation
         console.log('User created:', response.data);
         // Optionally, reset the form or perform other actions upon successful creation
+        // setConPassword("")
+        // setUsername("")
+        // setPassword("")
+        // setEmail("")
+        history.push('/login');
+        
       })
       .catch(error => {
         // Handle error
@@ -36,15 +44,8 @@ function Register() {
   };
 
   return (
-    <div className="login-container">
-      {isLoggedIn ? (
-        <div className="logged-in">
-          <h2>Welcome, {username}!</h2>
-          {/* Add user-specific content or redirect to another page */}
-          <button onClick={() => setIsLoggedIn(false)}>Logout</button>
-        </div>
-      ) : (
-        <form className="login-form" onSubmit={handleLogin}>
+    <div className="register-container">
+        <form className="register-form" onSubmit={handleLogin}>
           <h2>Register</h2>
           <label>
             Username:
@@ -79,8 +80,8 @@ function Register() {
             />
           </label>
           <button type="submit">Register</button>
+          <p><a href="/login">Already have an account?</a></p>
         </form>
-      )}
     </div>
   );
 }
