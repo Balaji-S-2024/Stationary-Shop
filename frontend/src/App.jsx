@@ -5,12 +5,13 @@ import Register from './components/register/Register'
 import Login from "./components/login/Login";
 
 function App() {
+  const users = []
 
   return (
     <Switch>
       <Routes>
-        <Route exact path='/' element={<Home/>}/>
-        <Route path="/home" element={<Home/>} />
+        <Route exact path='/' element={<Home user={users} />}/>
+        <Route path="/home" element={<Home user={users}/>} />
         <Route path="/register" element={<Register/>} />
         <Route path="/login" element={<Login/>} />
       </Routes>

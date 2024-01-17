@@ -2,7 +2,7 @@ import './Home.css'
 import pencil from '../../assets/pencil.jpg'
 import ProductCard from './productCard';
 
-function Home(user) {
+function Home(props) {
 
   const products = [
     { id: 1, title: 'Product 1', image: pencil, description: 'Description 1' },
@@ -14,13 +14,22 @@ function Home(user) {
     // Add more product data as needed
   ];
 
+  const { user } = props;
+
   return (
-    <>
-    {user}
+    <>        
       <div className="landing-page">
         <div className="buttons-container">
-          <div className="button signup-button"><a href="/register">Register</a></div>
-          <div className="button login-button"><a href="/login">Login</a></div>
+          {
+            user.length > 0?
+              <div className="button login-button">Profile</div>
+              :
+              <>
+                <div className="button signup-button"><a href="/register">Register</a></div>
+                <div className="button login-button"><a href="/login">Login</a></div>
+              </>
+              
+            }
         </div>
       <header>
         <h1>Welcome to Stationary Shop</h1>
