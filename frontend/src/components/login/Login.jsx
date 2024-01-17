@@ -2,39 +2,36 @@ import React, { useEffect, useState } from 'react';
 import './Login.css'; // Import your CSS file
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import Home from '../home/Home';
 
 function Login() {
   const [loggedIn, setLoggedIn] = useState(false);
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [usernames, setUsername] = useState('');
+  const [passwords, setPassword] = useState('');
   const [user, setUser] = useState({
     username: '',
     password: '',
-  });;
+  });
 
   const navigate = useNavigate();
 
   const handleLogin = (event) => {
     event.preventDefault();
     setUser({
-      username:username,
-      password:password,
+      username:usernames,
+      password:passwords,
     })
     console.log('user');
     console.log(user);
     // Handle login logic (authentication, API calls, etc.) here
     axios.post('http://localhost:3000/login', user)
-      .then(response => {
+      .then(res => {
         // Handle successful creation
         console.log('Donee;');
-        // Optionally, reset the form or perform other actions upon successful creation
-        // setConPassword("")
-        // setUsername("")
-        // setPassword("")
-        // setEmail("")
-        // history.push('/home');
         navigate('/home');
+        // axios.post('http://localhost:3000/makelogin', user)
+        // .then(res => {
+
+        // })
         
       })
       .catch(error => {
@@ -44,7 +41,7 @@ function Login() {
     
 
 
-    console.log('Logging in...', { username, password });
+    console.log('Logging in...', { usernames, passwords });
   };
 
   return (
@@ -54,13 +51,13 @@ function Login() {
         <input
           type="text"
           placeholder="Username"
-          value={username}
+          value={usernames}
           onChange={(e) => setUsername(e.target.value)}
         />
         <input
           type="password"
           placeholder="Password"
-          value={password}
+          value={passwords}
           onChange={(e) => setPassword(e.target.value)}
         />
         <button type="submit">Login</button>

@@ -1,6 +1,9 @@
 import './Home.css'
 import pencil from '../../assets/pencil.jpg'
 import ProductCard from './productCard';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import Login from '../login/Login';
 
 function Home(props) {
 
@@ -14,15 +17,40 @@ function Home(props) {
     // Add more product data as needed
   ];
 
-  const { user } = props;
+  const [user, setUser] = useState([]);
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const response = await axios.get('http://localhost:3000/get-user'); // Replace '123' with the actual user ID
+        setUser(response.data);
+      } catch (error) {
+        console.error('Error fetching user:', error);
+      }
+    };
+
+    fetchUser();
+  }, []);
+  console.log(user);
+  const loggedInUser = user.find(user => user.isLoggedIn === true);
+  
+  const handleProfile = (event) => {
+    console.log(loggedInUser.name);
+    console.log(loggedInUser.email);
+    console.log(loggedInUser.isLoggedIn);
+    console.log(loggedInUser.role);
+    console.log(loggedInUser.createdAt);
+  }
 
   return (
     <>        
       <div className="landing-page">
         <div className="buttons-container">
           {
-            user.length > 0?
-              <div className="button login-button">Profile</div>
+            loggedInUser != null > 0?
+              <div className="button login-button"
+              onClick={handleProfile}
+              >Profile</div>
               :
               <>
                 <div className="button signup-button"><a href="/register">Register</a></div>

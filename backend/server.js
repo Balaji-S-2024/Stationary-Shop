@@ -73,14 +73,12 @@ app.post('/login', async (req, res) => {
     console.log(req.body);
     const user = await User.findOne({ name: username, password: password });
     console.log(user);
-    if (user) {
-      const token = jwt.sign({ userId: user.id }, secretKey, { expiresIn: '1d' });
-      res.json({ token });
-    } else {
-      res.status(401).json({ message: 'Invalid credentials' });
-    }
-  });
+    user.isLoggedIn = true;
+    user.save()
+    console.log(user);
 
+    // user.isLoggedIn = true;
+  });
 
 
 

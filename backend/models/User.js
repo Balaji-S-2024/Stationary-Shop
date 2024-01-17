@@ -16,8 +16,12 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,
     required: [true, "Please Enter Your Password"],
-    minLength: [8, "Password should have more than 4 characters"],
+    minLength: [4, "Password should have more than 4 characters"],
     select: false, // this will make sure password is sended with data to anyone not even admin when he req for user data
+  },
+  isLoggedIn: {
+    type: Boolean,
+    default: false,
   },
   role: {
     type: String,
