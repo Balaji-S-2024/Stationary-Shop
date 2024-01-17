@@ -2,7 +2,7 @@ import './Home.css'
 import pencil from '../../assets/pencil.jpg'
 import ProductCard from './productCard';
 
-function Home() {
+function Home(user) {
 
   const products = [
     { id: 1, title: 'Product 1', image: pencil, description: 'Description 1' },
@@ -10,14 +10,16 @@ function Home() {
     { id: 3, title: 'Product 3', image: pencil, description: 'Description 3' },
     { id: 4, title: 'Product 4', image: pencil, description: 'Description 4' },
     { id: 5, title: 'Product 5', image: pencil, description: 'Description 5' },
+    { id: 6, title: 'Product 6', image: pencil, description: 'Description 6' },
     // Add more product data as needed
   ];
 
   return (
     <>
+    {user}
       <div className="landing-page">
         <div className="buttons-container">
-          <div className="button signup-button">Sign Up</div>
+          <div className="button signup-button"><a href="/register">Register</a></div>
           <div className="button login-button"><a href="/login">Login</a></div>
         </div>
       <header>

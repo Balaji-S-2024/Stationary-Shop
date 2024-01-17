@@ -1,8 +1,9 @@
 const express = require('express')
 const mongoose = require('mongoose')
-const bodyParser = require("body-parser");// used for image and other files
+const bodyParser = require("body-parser");
 const path = require("path");
 const cors = require("cors");
+const jwt = require('jsonwebtoken');
 
 const app = express()
 
@@ -13,11 +14,9 @@ connection();
 app.use(express.json());
 app.use(cors());
 
-// 
-
-const newUserCollection = require('./models/User'); 
-
 // API starts
+// REGISTER
+const newUserCollection = require('./models/User'); 
 app.post('/register', async (req, res) => {
     console.log('hitting register...');
     try {
@@ -58,25 +57,39 @@ app.get('/get-user', async (req, res) => {
       }
 })
 
+//LOGIN
+const crypto = require('crypto');
+
+const generateSecretKey = () => {
+  return crypto.randomBytes(32).toString('hex');
+};
+
+const secretKey = generateSecretKey();
+console.log('Generated Secret Key:', secretKey);
+
+// login API
+app.post('/login', async (req, res) => {
+    const { username, password } = req.body;
+    console.log(req.body);
+    const user = await User.findOne({ name: username, password: password });
+    console.log(user);
+    if (user) {
+      const token = jwt.sign({ userId: user.id }, secretKey, { expiresIn: '1d' });
+      res.json({ token });
+    } else {
+      res.status(401).json({ message: 'Invalid credentials' });
+    }
+  });
+
+
+
+
+
+
 app.get('/', async (req, res) => {
     console.log('hitting get...');
     res.send('get')
 })
-
-
-
-
-
-
-
-// 
-
-
-// const user = require("./routes/userRoute");
-
-// app.use(cookieParser());
-
-// app.use("/", user);
 
 app.listen(3000, () => {
     console.log('Backend Server Running...');

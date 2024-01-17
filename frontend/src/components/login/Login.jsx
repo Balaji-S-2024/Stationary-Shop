@@ -1,31 +1,46 @@
 import React, { useEffect, useState } from 'react';
 import './Login.css'; // Import your CSS file
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import Home from '../home/Home';
 
 function Login() {
+  const [loggedIn, setLoggedIn] = useState(false);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [users, setUsers] = useState([]);
+  const [user, setUser] = useState({
+    username: '',
+    password: '',
+  });;
 
-  useEffect(() => {
-    // Fetch data when the component mounts
-    const fetchData = async () => {
-      try {
-        const response = await axios.get('http://localhost:3000/get-user'); // Make a GET request to your backend API
-        setUsers(response.data); // Update the state with the fetched data
-        console.log('res.data');
-        console.log(users);
-      } catch (error) {
-        console.error('Error fetching users:', error);
-      }
-    };
-
-    fetchData(); // Call the async function to fetch data
-  }, []);
+  const navigate = useNavigate();
 
   const handleLogin = (event) => {
     event.preventDefault();
+    setUser({
+      username:username,
+      password:password,
+    })
+    console.log('user');
+    console.log(user);
     // Handle login logic (authentication, API calls, etc.) here
+    axios.post('http://localhost:3000/login', user)
+      .then(response => {
+        // Handle successful creation
+        console.log('Donee;');
+        // Optionally, reset the form or perform other actions upon successful creation
+        // setConPassword("")
+        // setUsername("")
+        // setPassword("")
+        // setEmail("")
+        // history.push('/home');
+        navigate('/home');
+        
+      })
+      .catch(error => {
+        // Handle error
+        console.error('Error creating user:', error);
+      });
     
 
 
@@ -51,6 +66,9 @@ function Login() {
         <button type="submit">Login</button>
       <p><a href="/register">Don't have an account?</a></p>
       </form>
+      {
+      }
+      {/* <Home></Home> */}
     </div>
   );
 }
