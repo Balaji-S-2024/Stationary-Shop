@@ -6,24 +6,40 @@ import axios from 'axios';
 function Register() {
   // const history = useHistory();
 
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [email, setEmail] = useState('');
+  const [usernam, setUsername] = useState('');
+  const [passwor, setPassword] = useState('');
+  const [emai, setEmail] = useState('');
   const [conpassword, setConPassword] = useState('');
-  const [userData, setUserData] = useState({
-    username: '',
-    email: '',
-    password: '',
-  });
+  // const [userData, setUserData] = useState({
+  //   username: '',
+  //   email: '',
+  //   password: '',
+  // });
+
+  const handleUsernameChange = (e) => {
+    setUsername(e.target.value);
+  };
+
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+  };
+
+  const handleConformPasswordChange = (e) => {
+    setConPassword(e.target.value);
+  };
 
   const handleLogin = async (event) => {
     // Handle all the validations
     event.preventDefault();
-    setUserData({
-      username:username,
-      email:email,
-      password:password,
-    })
+    const userData = {
+      username:usernam,
+      email:emai,
+      password:passwor,
+    };
     console.log('Requesting...');
     axios.post('http://localhost:3000/register', userData)
       .then(response => {
@@ -51,24 +67,24 @@ function Register() {
             Username:
             <input
               type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              value={usernam}
+              onChange={handleUsernameChange}
             />
           </label>
           <label>
             Email:
             <input
               type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={emai}
+              onChange={handleEmailChange}
             />
           </label>
           <label>
             Password:
             <input
               type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              value={passwor}
+              onChange={handlePasswordChange}
             />
           </label>
           <label>
@@ -76,7 +92,7 @@ function Register() {
             <input
               type="password"
               value={conpassword}
-              onChange={(e) => setConPassword(e.target.value)}
+              onChange={handleConformPasswordChange}
             />
           </label>
           <button type="submit">Register</button>

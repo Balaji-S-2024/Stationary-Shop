@@ -26,13 +26,7 @@ function Login() {
     axios.post('http://localhost:3000/login', user)
       .then(res => {
         // Handle successful creation
-        console.log('Donee;');
-        navigate('/home');
-        // axios.post('http://localhost:3000/makelogin', user)
-        // .then(res => {
-
-        // })
-        
+        console.log('Donee;');        
       })
       .catch(error => {
         // Handle error

@@ -31,9 +31,8 @@ function Home(props) {
 
     fetchUser();
   }, []);
-  console.log(user);
+  // console.log(user);
   const loggedInUser = user.find(user => user.isLoggedIn === true);
-  
   const handleProfile = (event) => {
     console.log(loggedInUser.name);
     console.log(loggedInUser.email);
@@ -47,10 +46,13 @@ function Home(props) {
       <div className="landing-page">
         <div className="buttons-container">
           {
-            loggedInUser != null > 0?
+            loggedInUser != null && loggedInUser != undefined > 0?
+            <>
               <div className="button login-button"
               onClick={handleProfile}
               >Profile</div>
+              <div className="button signup-button">Logout</div>
+            </>
               :
               <>
                 <div className="button signup-button"><a href="/register">Register</a></div>
